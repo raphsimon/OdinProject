@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>    
+    // Returns the computer selection
+    function computerPlay(){
+        let nb = Math.floor((Math.random() * 3) + 1);
+        let selection;
+
+        if (nb == 1) {
+            selection = "rock";
+        } else if (nb == 2) {
+            selection = "paper";
+        } else {
+            selection = "scissors";
+        }
+        return selection;
+    } 
+
+    function playRound(playerSelection, computerSelection) {
+        let result;
+        // Case: Equality
+        if (playerSelection === computerSelection) {
+            result = "No winner!";
+        } // Case: Rock - Paper
+        else if (playerSelection == "rock" && computerSelection == "paper") {
+            result = "You Lose! Paper beats Rock!";
+        } else if (playerSelection == "paper" && computerSelection == "rock") {
+            result = "You Win! Paper beats Rock!";
+        } // Case: Rock - Scissors
+        else if (playerSelection == "rock" && computerSelection == "scissors") {
+            result = "You Win! Rock beats Scissors!";
+        } else if (playerSelection == "scissors" && computerSelection == "rock") {
+            result = "You Lose! Rock beats Scissors!";
+        } // Case: Paper - Scissors
+        else if (playerSelection == "paper" && computerSelection == "scissors") {
+            result = "You Lose! Scissors cut Paper!";
+        } else if (playerSelection == "scissors" && computerSelection == "paper") {
+            result = "You Win! Scissors cut Paper!";
+        }
+        return result;
+    }
+
+    function game(){
+        for(var i = 0; i < 5; i++){
+            var userInput = window.prompt("Your choice: ");
+            console.log(playRound(userInput, computerPlay()));
+        }
+    }
+
+    game();
+  </script>
+</body>
+</html>
